@@ -1,0 +1,4 @@
+新建 文本文档.txt
+*.txt
+.DS_Store
+Thumbs.db
