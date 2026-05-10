@@ -290,6 +290,111 @@ footer .fbot{display:flex;justify-content:space-between;align-items:center;flex-
 
 /* drag tag (decorative) */
 .tape{position:absolute;background:var(--pink);color:var(--cream);font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.25em;text-transform:uppercase;padding:6px 16px;transform:rotate(-3deg)}
+
+/* ============================================================
+   MOBILE OPTIMIZATION  (≤760px)
+   ============================================================ */
+@media (max-width:760px){
+  body{font-size:16px;line-height:1.65;-webkit-tap-highlight-color:transparent}
+  section{padding:80px 5vw}
+  .tag{font-size:10px;letter-spacing:.25em;margin-bottom:24px}
+  .tag::before{width:20px}
+  .h2{font-size:clamp(40px,12vw,72px);margin-bottom:30px}
+  .lede{font-size:17px;margin-bottom:26px}
+  p.body{font-size:16px;max-width:100%}
+  .bigquote{font-size:clamp(26px,7vw,46px);margin:50px 0 0}
+
+  /* topbar */
+  .topbar{padding:14px 16px;font-size:10px;letter-spacing:.12em}
+
+  /* hero — un-absolute opening + scroll hint */
+  .hero{padding:80px 5vw 60px;min-height:auto}
+  .hero h1{font-size:clamp(56px,17vw,120px);line-height:.92}
+  .hero h1 em{font-size:.16em!important}
+  .hero .meta{font-size:10px;gap:12px;margin-bottom:20px;letter-spacing:.22em}
+  .hero .sub{margin-top:24px;font-size:11px;gap:12px;letter-spacing:.15em}
+  .hero .opening{position:static;max-width:100%;margin-top:36px;font-size:15px;line-height:1.7;padding:6px 0 6px 16px}
+  .hero .scroll-hint{position:static;margin-top:30px;font-size:10px}
+  .shape.s1{width:90px;height:90px;top:5%;right:5%}
+  .shape.s2{width:46px;height:46px;top:auto;bottom:35%;left:8%}
+  .shape.s3{width:60px;top:18%;left:auto;right:8%}
+
+  /* cage — 2 cols */
+  .cage-grid{grid-template-columns:repeat(2,1fr);margin:36px 0 22px}
+  .cage-grid .w{padding:18px 8px;font-size:18px}
+  .cage-grid .w small{font-size:9px}
+  .cage-counter{flex-direction:column;align-items:flex-start;gap:14px}
+  .cage-counter .num{font-size:54px}
+  .dots-row{margin-top:40px;flex-wrap:wrap;gap:10px}
+
+  /* blues — vertical stack, names visible without hover */
+  .blue-bar{flex-direction:column;height:auto;margin:36px 0}
+  .blue-bar .swatch{flex:none;height:54px;border-right:none;border-bottom:1px solid rgba(31,41,66,.3);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--cream);text-shadow:0 1px 6px rgba(0,0,0,.55)}
+  .blue-bar .swatch:hover{flex:none}
+  .blue-bar .swatch:hover::after{display:none}
+  .blue-bar .swatch::before{content:attr(data-cn);font-family:"Noto Serif SC",serif;font-size:20px;font-weight:700;color:var(--cream);text-transform:none;letter-spacing:0;text-shadow:0 1px 6px rgba(0,0,0,.55)}
+  .blue-stats{grid-template-columns:1fr 1fr}
+  .blue-stats .stat:nth-child(3){grid-column:1 / -1}
+  .stat{padding:22px 16px}
+  .stat .num{font-size:48px}
+
+  /* grammar — already 1col at 820px, tighten internals */
+  .grammar-split>div{padding:32px 22px;min-height:auto}
+  .grammar-split h3{font-size:36px}
+  .grammar-split .label{margin-bottom:20px}
+  .morph{font-size:24px;min-height:120px}
+  .grammar-toggle{gap:8px}
+  .grammar-toggle button{padding:8px 12px;font-size:10px;letter-spacing:.15em}
+
+  /* self stage — scale down */
+  .self-stage{height:340px;margin:40px 0}
+  .self-stage .me{font-size:clamp(110px,30vw,200px)}
+  .self-stage .them.t1{font-size:18px;top:8%;left:6%}
+  .self-stage .them.t2{font-size:16px;top:14%;right:6%}
+  .self-stage .them.t3{font-size:20px;bottom:10%;left:8%}
+  .self-stage .them.t4{font-size:18px;bottom:16%;right:6%}
+  .self-stage .them.t5{font-size:14px;top:52%;right:4%}
+  .self-controls{flex-direction:column;align-items:stretch;gap:10px}
+  .self-controls button{padding:14px;font-size:11px}
+  .pull{font-size:clamp(28px,8vw,52px);margin-top:50px}
+
+  /* lab — already 1col at 900px, tighten */
+  .lab-display,.lab-control{padding:28px 22px}
+  .lab-text{font-size:clamp(24px,7vw,40px);min-height:auto}
+  .lab-step{padding:14px 16px;font-size:14px}
+  .lab-control .ttl{font-size:30px}
+  .lab-control .desc{font-size:12px;margin-bottom:22px}
+  .lab-feeling{flex-direction:column;gap:14px}
+  .lab-feeling .meter+.meter{margin-left:0}
+  .lab-final{font-size:clamp(28px,8vw,50px);margin-top:40px}
+
+  /* manifesto */
+  .manifesto{padding:80px 5vw 70px}
+  .manifesto-num{font-size:clamp(60px,16vw,100px);margin-bottom:18px}
+  .manifesto-title{font-size:clamp(44px,12vw,84px);margin-bottom:36px;line-height:.95}
+  .manifesto-grid{grid-template-columns:1fr;gap:16px;margin-top:30px}
+  .m-card{padding:26px 22px;min-height:auto}
+  .m-card .n{font-size:42px}
+  .m-card .t{font-size:20px}
+  .m-card .d{font-size:12px}
+  .tape{font-size:9px;padding:4px 12px;top:24px;right:5vw}
+
+  /* footer */
+  footer{padding:50px 5vw 36px}
+  footer .ftop{flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:28px}
+  footer h4{font-size:clamp(26px,7vw,42px)}
+  footer .fbot{flex-direction:column;align-items:flex-start;gap:10px;font-size:10px}
+}
+
+/* very small phones */
+@media (max-width:380px){
+  section{padding:64px 5vw}
+  .h2{font-size:36px}
+  .hero h1{font-size:50px}
+  .cage-grid .w{font-size:16px;padding:14px 6px}
+  .self-stage{height:300px}
+  .self-stage .them.t3{font-size:18px}
+}
 </style>
 </head>
 <body>
