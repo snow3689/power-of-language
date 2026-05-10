@@ -9,13 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,900&family=Space+Grotesk:wght@400;500;700&family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;500;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
 <style>
 :root{
-  --pink:#ff3d7f;
-  --blue:#1840ff;
-  --yellow:#ffd60a;
-  --cream:#f3eee4;
-  --ink:#0a0a0a;
-  --red:#e63946;
-  --green:#0fb37b;
+  /* Lotta Nieminen palette — muted, warm, controlled */
+  --cream:#efe5d2;          /* warm off-white background */
+  --ink:#1d2330;            /* deep navy-ink for type */
+  --pink:#c54c33;           /* terracotta (was hot pink) */
+  --yellow:#d4a017;         /* mustard ochre (was neon yellow) */
+  --blue:#2b3a52;           /* deep navy (was electric blue) */
+  --red:#8a3a2d;            /* burnt brick */
+  --green:#6b7a4f;          /* sage olive */
+  --blush:#e6a896;          /* dusty rose accent */
+  --shadow:#c8b994;         /* warm khaki shadow */
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--cream);color:var(--ink);overflow-x:hidden}
@@ -23,6 +26,12 @@ body{
   font-family:"Noto Serif SC","Bodoni Moda",Georgia,serif;
   font-size:18px;line-height:1.7;
   cursor:none;
+}
+/* Riso-print grain — subtle, only ~6% opacity */
+body::before{
+  content:"";position:fixed;inset:0;z-index:9000;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/></svg>");
+  mix-blend-mode:multiply;opacity:.18;
 }
 body *{cursor:none}
 @media (max-width:760px){
@@ -146,22 +155,37 @@ p.body.right{margin-left:auto}
 .cage-counter .num{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:900;font-size:80px;color:var(--pink);line-height:1;letter-spacing:-.04em}
 .cage-counter .reset{padding:10px 22px;border:1px solid var(--ink);background:transparent;font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.25em;text-transform:uppercase;cursor:none;transition:.2s}
 .cage-counter .reset:hover{background:var(--ink);color:var(--cream)}
-.bigquote{font-family:"Bodoni Moda","Noto Serif SC",serif;font-style:italic;font-weight:900;font-size:clamp(34px,5vw,72px);line-height:1.05;margin:80px 0 0;max-width:1100px}
-.bigquote .hl{background:var(--yellow);padding:0 .15em}
+.bigquote{font-family:"Bodoni Moda","Noto Serif SC",serif;font-style:italic;font-weight:900;font-size:clamp(34px,5vw,72px);line-height:1.05;margin:80px 0 0;max-width:1100px;position:relative}
+.bigquote .hl{background:var(--yellow);padding:0 .15em;color:var(--ink)}
 .bigquote .strike{text-decoration:line-through;text-decoration-color:var(--pink);text-decoration-thickness:5px;color:#7a7a7a}
 
-/* ========== SECTION 3 — Russian blues ========== */
-.blues{background:#0a0d2a;color:var(--cream);overflow:hidden}
+/* Lotta-style ornament — row of dots */
+.dots-row{display:flex;gap:14px;margin:60px 0 0;align-items:center}
+.dots-row .dot{width:10px;height:10px;border-radius:50%;background:var(--ink)}
+.dots-row .dot.t{background:var(--pink)}
+.dots-row .dot.m{background:var(--yellow)}
+.dots-row .dot.s{background:var(--green)}
+.dots-row .ln{flex:1;height:1px;background:var(--ink);opacity:.3;margin-left:8px}
+/* Lotta arc ornament — semi-circle */
+.arc{display:inline-block;width:80px;height:40px;border-radius:80px 80px 0 0;background:var(--pink);vertical-align:bottom;margin:0 8px}
+.arc.m{background:var(--yellow)}
+.arc.s{background:var(--green)}
+.arc.flip{border-radius:0 0 80px 80px}
+
+/* ========== SECTION 3 — Russian blues (Lotta-muted) ========== */
+.blues{background:#1f2942;color:var(--cream);overflow:hidden}
 .blues .h2{color:var(--cream)}
-.blues .h2 em{color:#7d9bff;font-family:inherit}
-.blue-bar{display:flex;height:120px;margin:50px 0;border-radius:0;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4)}
-.blue-bar .swatch{flex:1;cursor:none;transition:flex .5s cubic-bezier(.2,.8,.2,1);display:flex;align-items:flex-end;padding:14px;font-family:"Space Grotesk",sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);position:relative}
-.blue-bar .swatch:hover{flex:6;color:#fff}
-.blue-bar .swatch:hover::after{content:attr(data-cn);position:absolute;top:14px;left:14px;font-family:"Noto Serif SC",serif;font-size:36px;font-weight:900;letter-spacing:0;color:#fff;text-transform:none}
-.blue-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-top:30px;font-family:"Space Grotesk",sans-serif}
-.stat{padding:24px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.03)}
-.stat .num{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:900;font-size:60px;line-height:1;color:#7d9bff}
-.stat .lab{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px}
+.blues .h2 em{color:var(--blush);font-family:inherit}
+.blue-bar{display:flex;height:140px;margin:50px 0;overflow:hidden}
+.blue-bar .swatch{flex:1;cursor:none;transition:flex .5s cubic-bezier(.2,.8,.2,1);display:flex;align-items:flex-end;padding:16px;font-family:"Space Grotesk",sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,229,210,.55);position:relative;border-right:1px solid rgba(31,41,66,.3)}
+.blue-bar .swatch:last-child{border-right:none}
+.blue-bar .swatch:hover{flex:6;color:var(--cream)}
+.blue-bar .swatch:hover::after{content:attr(data-cn);position:absolute;top:18px;left:18px;font-family:"Noto Serif SC",serif;font-size:38px;font-weight:900;letter-spacing:0;color:var(--cream);text-transform:none}
+.blue-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:30px;font-family:"Space Grotesk",sans-serif;border-top:1px solid rgba(239,229,210,.18)}
+.stat{padding:30px 24px;border-right:1px solid rgba(239,229,210,.18);border-bottom:1px solid rgba(239,229,210,.18)}
+.stat:last-child{border-right:none}
+.stat .num{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:900;font-size:64px;line-height:1;color:var(--yellow)}
+.stat .lab{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:rgba(239,229,210,.55);margin-top:10px}
 
 /* ========== SECTION 4 — Chinese vs English ========== */
 .grammar{background:var(--cream);color:var(--ink)}
@@ -213,7 +237,7 @@ p.body.right{margin-left:auto}
   display:grid;grid-template-columns:1.4fr 1fr;min-height:520px;
 }
 @media(max-width:900px){.lab-stage{grid-template-columns:1fr}}
-.lab-display{padding:50px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid rgba(255,255,255,.15);background:linear-gradient(180deg,#0a0a0a,#161616)}
+.lab-display{padding:50px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid rgba(239,229,210,.15);background:linear-gradient(180deg,#1d2330,#262d3e)}
 .lab-display .step{font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:18px}
 .lab-text{font-family:"Noto Serif SC",serif;font-weight:900;font-size:clamp(34px,4.6vw,68px);line-height:1.18;letter-spacing:-.01em;min-height:240px;transition:opacity .4s}
 .lab-text .new{color:var(--yellow)}
@@ -228,7 +252,7 @@ p.body.right{margin-left:auto}
 .meter.fear .bar::after{background:var(--red)}
 .meter.action .bar::after{background:var(--green)}
 
-.lab-control{padding:50px;display:flex;flex-direction:column;background:#161616}
+.lab-control{padding:50px;display:flex;flex-direction:column;background:#262d3e}
 .lab-control .ttl{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:900;font-size:36px;margin-bottom:6px}
 .lab-control .desc{font-family:"Space Grotesk",sans-serif;font-size:13px;color:#aaa099;line-height:1.7;margin-bottom:30px}
 .lab-step{display:block;width:100%;text-align:left;padding:18px 22px;margin-bottom:10px;background:transparent;color:var(--cream);border:1px solid rgba(255,255,255,.15);font-family:"Noto Serif SC",serif;font-size:16px;cursor:none;transition:.25s;line-height:1.4;position:relative}
@@ -346,6 +370,13 @@ footer .fbot{display:flex;justify-content:space-between;align-items:center;flex-
     </div>
   </div>
 
+  <div class="dots-row reveal">
+    <span class="dot"></span><span class="dot t"></span><span class="dot"></span>
+    <span class="dot m"></span><span class="dot"></span><span class="dot s"></span>
+    <span class="dot"></span><span class="ln"></span>
+    <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);opacity:.55">§ INTERLUDE</span>
+  </div>
+
   <div class="bigquote reveal">
     "<span class="strike">语言是窗户</span>"<br>
     语言是<span class="hl">墙</span>——<br>
@@ -364,16 +395,15 @@ footer .fbot{display:flex;justify-content:space-between;align-items:center;flex-
   <p class="kicker reveal" style="color:#7d9bff">悬停 / 触摸下面任意一段色带，看它的真名 →</p>
 
   <div class="blue-bar reveal" id="blueBar">
-    <div class="swatch" style="background:#dce6ff" data-cn="淡蓝">PALE</div>
-    <div class="swatch" style="background:#a9c0ff" data-cn="天空">CIEL</div>
-    <div class="swatch" style="background:#7d9bff" data-cn="法兰西">FRANCE</div>
-    <div class="swatch" style="background:#5577ff" data-cn="湛蓝">BRIGHT</div>
-    <div class="swatch" style="background:#3855e8" data-cn="宝石">GEM</div>
-    <div class="swatch" style="background:#1840ff" data-cn="电光蓝">ELECTRIC</div>
-    <div class="swatch" style="background:#0f2ec2" data-cn="海军">NAVY</div>
-    <div class="swatch" style="background:#0a2080" data-cn="深海">ABYSS</div>
-    <div class="swatch" style="background:#071657" data-cn="子夜">MIDNIGHT</div>
-    <div class="swatch" style="background:#040a30" data-cn="墨夜">INK</div>
+    <div class="swatch" style="background:#d8d8c8" data-cn="灰白">CHALK</div>
+    <div class="swatch" style="background:#b9c4ce" data-cn="雾蓝">MIST</div>
+    <div class="swatch" style="background:#94a8c0" data-cn="粉笔蓝">POWDER</div>
+    <div class="swatch" style="background:#7591ad" data-cn="天蓝">CIEL</div>
+    <div class="swatch" style="background:#566f8f" data-cn="钢蓝">STEEL</div>
+    <div class="swatch" style="background:#3e5573" data-cn="石板">SLATE</div>
+    <div class="swatch" style="background:#2b3a52" data-cn="海军">NAVY</div>
+    <div class="swatch" style="background:#1a2438" data-cn="深海">ABYSS</div>
+    <div class="swatch" style="background:#e6a896" data-cn="赤陶">TERRA</div>
   </div>
 
   <div class="blue-stats reveal">
