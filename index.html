@@ -96,7 +96,7 @@ img{max-width:100%;display:block}
   line-height:.86;letter-spacing:-.02em;
   font-style:italic;
 }
-.hero h1 .word{display:inline-block;transition:transform .4s cubic-bezier(.2,.8,.2,1),color .3s}
+.hero h1 .word{display:inline-block;transition:transform .22s cubic-bezier(.2,.8,.2,1),color .18s}
 .hero.in h1 .word:hover{transform:translateY(-12px) rotate(-3deg);color:var(--pink)}
 .hero h1 .accent{color:var(--pink);font-style:normal;font-family:"Noto Serif SC",serif}
 .hero h1 .accent2{color:var(--yellow);font-style:normal;font-family:"Noto Serif SC",serif}
@@ -185,10 +185,15 @@ p.body.right{margin-left:auto}
 .blue-bar .swatch:hover{flex:6;color:var(--cream)}
 .blue-bar .swatch:hover::after{content:attr(data-cn);position:absolute;top:18px;left:18px;font-family:"Noto Serif SC",serif;font-size:38px;font-weight:900;letter-spacing:0;color:var(--cream);text-transform:none}
 .blue-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:30px;font-family:"Space Grotesk",sans-serif;border-top:1px solid rgba(239,229,210,.18)}
-.stat{padding:30px 24px;border-right:1px solid rgba(239,229,210,.18);border-bottom:1px solid rgba(239,229,210,.18)}
+.stat{padding:30px 24px;border-right:1px solid rgba(239,229,210,.18);border-bottom:1px solid rgba(239,229,210,.18);cursor:none;transition:background .35s}
 .stat:last-child{border-right:none}
-.stat .num{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:900;font-size:64px;line-height:1;color:var(--yellow)}
-.stat .lab{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:rgba(239,229,210,.55);margin-top:10px}
+.stat .num{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:900;font-size:64px;line-height:1;color:var(--yellow);transition:transform .3s cubic-bezier(.34,1.56,.64,1),color .3s;display:inline-block;transform-origin:left center}
+.stat .lab{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:rgba(239,229,210,.55);margin-top:10px;transition:color .3s}
+.stat .detail{font-family:"Space Grotesk",sans-serif;font-size:12px;letter-spacing:.18em;color:rgba(125,155,255,0);margin-top:14px;min-height:18px;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease,color .35s}
+.stat:hover{background:rgba(125,155,255,.06)}
+.stat:hover .num{transform:scale(1.06) rotate(-3deg);color:#9fb4ff}
+.stat:hover .lab{color:var(--cream)}
+.stat:hover .detail{opacity:1;transform:none;color:rgba(220,228,255,.85)}
 
 /* ========== SECTION 4 — Chinese vs English ========== */
 .grammar{background:var(--cream);color:var(--ink)}
@@ -219,6 +224,11 @@ p.body.right{margin-left:auto}
 .self-stage .them.t3{bottom:18%;left:24%;font-size:48px}
 .self-stage .them.t4{bottom:22%;right:14%;font-size:40px}
 .self-stage .them.t5{top:50%;right:8%;font-size:32px}
+.self-stage .them.t6{top:6%;left:6%;font-size:22px;opacity:.55}
+.self-stage .them.t7{top:62%;left:5%;font-size:28px;opacity:.7}
+.self-stage .them.t8{bottom:6%;right:8%;font-size:22px;opacity:.55}
+.self-stage .them.t9{top:74%;right:30%;font-size:24px;opacity:.6}
+.self-stage .them.t10{top:4%;left:46%;font-size:18px;opacity:.5}
 .self-stage.crisis .me{transform:scale(1.6) rotate(-3deg);color:var(--cream)}
 .self-stage.crisis .them{opacity:.08;transform:scale(.6)}
 .self-controls{display:flex;gap:14px;justify-content:center;margin-top:0}
@@ -472,6 +482,11 @@ section>*{position:relative;z-index:1}
   .self-stage .them.t3{font-size:20px;bottom:10%;left:8%}
   .self-stage .them.t4{font-size:18px;bottom:16%;right:6%}
   .self-stage .them.t5{font-size:14px;top:52%;right:4%}
+  .self-stage .them.t6{font-size:11px;top:4%;left:4%}
+  .self-stage .them.t7{font-size:13px;top:64%;left:3%}
+  .self-stage .them.t8{font-size:11px;bottom:4%;right:5%}
+  .self-stage .them.t9{font-size:12px;top:76%;right:28%}
+  .self-stage .them.t10{font-size:10px;top:3%;left:42%}
   .self-controls{flex-direction:column;align-items:stretch;gap:10px}
   .self-controls button{padding:14px;font-size:11px}
   .pull{font-size:clamp(28px,8vw,52px);margin-top:50px}
@@ -647,14 +662,17 @@ section>*{position:relative;z-index:1}
     <div class="stat">
       <div class="num">12+</div>
       <div class="lab">俄语对蓝色的细分</div>
+      <div class="detail">голубой · синий · лазурный · бирюзовый …</div>
     </div>
     <div class="stat">
       <div class="num">2</div>
       <div class="lab">中文里的基本蓝</div>
+      <div class="detail">蓝 · 青</div>
     </div>
     <div class="stat">
       <div class="num">∞</div>
       <div class="lab">语言塑造认知的边界</div>
+      <div class="detail">无词 = 无界 = 无觉</div>
     </div>
   </div>
 
@@ -728,6 +746,11 @@ section>*{position:relative;z-index:1}
     <div class="them t3">他人的目光</div>
     <div class="them t4">你以为的梦想</div>
     <div class="them t5">钱</div>
+    <div class="them t6">朋友圈点赞</div>
+    <div class="them t7">同龄人</div>
+    <div class="them t8">房贷</div>
+    <div class="them t9">学历</div>
+    <div class="them t10">KPI</div>
     <div class="me">我</div>
   </div>
 
@@ -945,6 +968,7 @@ const hoverMap=[
   {sel:'.cage-grid .w',label:'DELETE'},
   {sel:'.cage-counter .reset',label:'RESET'},
   {sel:'.blue-bar .swatch',label:'EXPAND'},
+  {sel:'.blue-stats .stat',label:'MORE'},
   {sel:'.grammar-toggle button',label:'MORPH'},
   {sel:'.self-stage .me',label:'I AM'},
   {sel:'.self-controls button',label:'TRY'},
