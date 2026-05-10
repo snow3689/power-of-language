@@ -289,7 +289,19 @@ footer{background:var(--ink);color:var(--cream);padding:80px 6vw 50px;font-famil
 footer .ftop{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:40px}
 footer h4{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:900;font-size:clamp(34px,5vw,68px);letter-spacing:-.02em;color:var(--cream);max-width:700px}
 footer .meta{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#aaa099}
+footer .fmid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:34px 0 30px;border-bottom:1px solid rgba(255,255,255,.15)}
+footer .fcred{display:flex;flex-direction:column;gap:8px}
+footer .fcred .lbl{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#888070}
+footer .fcred .val{font-family:"Noto Serif SC",serif;font-weight:700;font-size:20px;letter-spacing:.01em;color:var(--cream)}
+footer .fcred-cta .val{color:var(--yellow);font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:opacity .2s}
+footer .fcred-cta .val:hover{opacity:.75}
+footer .fcred-cta .val::after{content:"  ⧉ 复制";font-family:"Space Grotesk",sans-serif;font-size:10px;letter-spacing:.18em;color:#aaa099;font-weight:400;margin-left:6px}
+footer .fcred-cta .val.copied::after{content:"  ✓ 已复制";color:var(--lime)}
 footer .fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;margin-top:28px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#888070}
+@media (max-width:760px){
+  footer .fmid{grid-template-columns:1fr;gap:18px;padding:24px 0}
+  footer .fcred .val{font-size:18px}
+}
 
 /* drag tag (decorative) */
 .tape{position:absolute;background:var(--pink);color:var(--cream);font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:.25em;text-transform:uppercase;padding:6px 16px;transform:rotate(-3deg)}
@@ -889,6 +901,20 @@ section>*{position:relative;z-index:1}
       <div style="margin-top:8px;color:#666">2026 · MAY · 10</div>
     </div>
   </div>
+  <div class="fmid">
+    <div class="fcred">
+      <span class="lbl">Content · 内容来源</span>
+      <span class="val">树林</span>
+    </div>
+    <div class="fcred">
+      <span class="lbl">Design · 网页制作</span>
+      <span class="val">雪糕</span>
+    </div>
+    <div class="fcred fcred-cta">
+      <span class="lbl">Contact · 微信</span>
+      <span class="val" id="wxId">Snoweven7</span>
+    </div>
+  </div>
   <div class="fbot">
     <div>设计献给：所有想看见自己的人</div>
     <div>↑ 回到顶部 · BACK TO TOP</div>
@@ -1143,6 +1169,27 @@ document.querySelectorAll('.m-card').forEach(card=>{
     stageEl.classList.toggle('crisis',crisis);
     reset();
   };
+})();
+
+/* ===== WeChat ID — click to copy ===== */
+(function(){
+  const el=document.getElementById('wxId');
+  if(!el)return;
+  el.addEventListener('click',async()=>{
+    const text=el.textContent.trim();
+    try{
+      if(navigator.clipboard&&window.isSecureContext){
+        await navigator.clipboard.writeText(text);
+      }else{
+        const ta=document.createElement('textarea');
+        ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+        document.body.appendChild(ta);ta.select();
+        document.execCommand('copy');document.body.removeChild(ta);
+      }
+      el.classList.add('copied');
+      setTimeout(()=>el.classList.remove('copied'),1800);
+    }catch(_){}
+  });
 })();
 </script>
 </body>
